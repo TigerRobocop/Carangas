@@ -22,7 +22,11 @@ class CarsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        label.text = "Carregando carros"
+//        label.text = "Carregando carros"
+        
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(loadCars), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,13 +35,17 @@ class CarsTableViewController: UITableViewController {
     }
 
 
-    func loadCars(){
+    @objc fileprivate func loadCars(){
+        label.text = "Carregando carros"
+        
         REST.loadCars(onComplete: { (cars) in
             
             self.cars = cars
             
             // precisa recarregar a tableview usando a main UI thread
             DispatchQueue.main.async {
+                self.refreshControl?.endRefreshing()
+
                 self.tableView.reloadData()
             }
         }) { (error) in
@@ -61,7 +69,14 @@ class CarsTableViewController: UITableViewController {
                 }
             }
             
-            print(response)
+        
+            
+            DispatchQueue.main.async {
+                self.refreshControl?.endRefreshing()
+                self.label.text = response
+                self.tableView.backgroundView = self.label
+                print(response)
+            }
         }
 
     }
@@ -70,7 +85,16 @@ class CarsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return cars.count
+        let count = cars.count
+        
+        if count == 0 {
+            tableView.backgroundView = label
+            label.text = "Sem dados"
+        } else {
+            tableView.backgroundView = nil
+        }
+//        tableView.backgroundView = count == 0 ? label : nil
+        return count
     }
 
     
