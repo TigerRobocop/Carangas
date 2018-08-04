@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 class CarsTableViewController: UITableViewController {
 
@@ -27,6 +28,16 @@ class CarsTableViewController: UITableViewController {
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(loadCars), for: .valueChanged)
         tableView.refreshControl = refreshControl
+        
+        
+        // Define the menus
+        SideMenuManager.default.menuLeftNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
+        
+        
+        // Enable gestures. The left and/or right menus must be set up above for these to work.
+        // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
+        SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
     }
     
     override func viewWillAppear(_ animated: Bool) {

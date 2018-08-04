@@ -58,6 +58,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Carangas" id="qEi-1J-Fj0">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="Dy8-Qi-JIF">
+                            <connections>
+                                <segue destination="1El-It-N4V" kind="presentation" identifier="menuSegue" id="cAL-Gt-vkR"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="tSI-m7-DTr">
                             <connections>
                                 <segue destination="grR-Sl-Z0I" kind="show" identifier="addSegue" id="Unn-qu-cRI"/>
@@ -67,7 +72,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ew9-fm-UBQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="262" y="175"/>
+            <point key="canvasLocation" x="-815" y="178"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MXM-Jb-ar3">
@@ -83,7 +88,129 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wgz-lH-c5N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-556" y="175"/>
+            <point key="canvasLocation" x="-1633" y="178"/>
+        </scene>
+        <!--Menu-->
+        <scene sceneID="9Xt-kx-IbW">
+            <objects>
+                <tableViewController id="2gw-mg-cXQ" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ofW-Th-d78">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection id="bAc-Cg-gkN">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="4va-BU-qNg" style="IBUITableViewCellStyleDefault" id="37N-EF-fBX">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="37N-EF-fBX" id="1SZ-aw-9JC">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Sobre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4va-BU-qNg">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="rsX-Lv-QYx" kind="show" id="IuW-30-Zds"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="2gw-mg-cXQ" id="sKT-QT-MMZ"/>
+                            <outlet property="delegate" destination="2gw-mg-cXQ" id="XHs-lQ-aJr"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Menu" id="YH6-dr-T61"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t0c-Gb-tFY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="282" y="-711"/>
+        </scene>
+        <!--Sobre-->
+        <scene sceneID="oQ8-W6-xFr">
+            <objects>
+                <viewController id="rsX-Lv-QYx" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GLx-LH-msp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="g68-hn-fNu">
+                                <rect key="frame" x="10" y="74" width="355" height="157"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Projeto da disciplina iOS" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNF-B7-4ln">
+                                        <rect key="frame" x="0.0" y="0.0" width="185" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Persistência de Dados &amp; Networking" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jK-tY-Ihy">
+                                        <rect key="frame" x="0.0" y="30.5" width="348" height="25.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desenvolvido por: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQf-nd-pJO">
+                                        <rect key="frame" x="0.0" y="66" width="142" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lívia Souza" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roJ-Ii-MKR">
+                                        <rect key="frame" x="0.0" y="96.5" width="129" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CESAR School, 2018" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQr-ER-6De">
+                                        <rect key="frame" x="0.0" y="136.5" width="158" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="g68-hn-fNu" firstAttribute="leading" secondItem="06H-3z-Meo" secondAttribute="leading" constant="10" id="sUo-qr-x54"/>
+                            <constraint firstItem="06H-3z-Meo" firstAttribute="trailing" secondItem="g68-hn-fNu" secondAttribute="trailing" constant="10" id="voQ-zZ-0Dv"/>
+                            <constraint firstItem="g68-hn-fNu" firstAttribute="top" secondItem="06H-3z-Meo" secondAttribute="top" constant="10" id="wqm-Qm-IoY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="06H-3z-Meo"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sobre" id="FbF-jZ-El4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wvj-u8-GJM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1541.5999999999999" y="-986.35682158920542"/>
+        </scene>
+        <!--Side Menu Navigation Controller-->
+        <scene sceneID="0mY-2U-VNe">
+            <objects>
+                <navigationController storyboardIdentifier="LeftMenuNavigationController" id="1El-It-N4V" customClass="UISideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GeL-PN-e2o">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftSide" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="2gw-mg-cXQ" kind="relationship" relationship="rootViewController" id="sE7-13-6T3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d4b-wZ-FUf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-671" y="-711"/>
         </scene>
         <!--Cadastro-->
         <scene sceneID="qdb-lC-fe7">
@@ -279,11 +406,8 @@
         <namedColor name="main">
             <color red="0.20000000298023224" green="0.56499999761581421" blue="0.57599997520446777" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="main">
-            <color red="0.20000000298023224" green="0.56499999761581421" blue="0.57599997520446777" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kKk-qI-2Ya"/>
+        <segue reference="Unn-qu-cRI"/>
     </inferredMetricsTieBreakers>
 </document>

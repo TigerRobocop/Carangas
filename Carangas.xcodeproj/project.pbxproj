@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		579AB7A421150FA800D58316 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579AB7A321150FA800D58316 /* Car.swift */; };
 		579AB7A9211510F500D58316 /* REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579AB7A8211510F500D58316 /* REST.swift */; };
+		57B6E936211619970053A4F9 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B6E935211619970053A4F9 /* MenuTableViewController.swift */; };
 		A1B18D051F9C1BDD00313110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B18D041F9C1BDD00313110 /* AppDelegate.swift */; };
 		A1B18D0A1F9C1BDD00313110 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B18D081F9C1BDD00313110 /* Main.storyboard */; };
 		A1B18D0C1F9C1BDD00313110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B18D0B1F9C1BDD00313110 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		3FBFC8C63C2E326957BB7497 /* Pods_Carangas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Carangas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		579AB7A321150FA800D58316 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		579AB7A8211510F500D58316 /* REST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST.swift; sourceTree = "<group>"; };
+		57B6E935211619970053A4F9 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		85F08B2D510A41A753087AB8 /* Pods-Carangas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carangas.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Carangas/Pods-Carangas.debug.xcconfig"; sourceTree = "<group>"; };
 		A1B18D011F9C1BDD00313110 /* Carangas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carangas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1B18D041F9C1BDD00313110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				A1B18D181F9C1DBA00313110 /* AddEditViewController.swift */,
 				A1B18D1A1F9C1DCF00313110 /* CarViewController.swift */,
 				579AB7A8211510F500D58316 /* REST.swift */,
+				57B6E935211619970053A4F9 /* MenuTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1B18D171F9C1D7E00313110 /* CarsTableViewController.swift in Sources */,
+				57B6E936211619970053A4F9 /* MenuTableViewController.swift in Sources */,
 				579AB7A9211510F500D58316 /* REST.swift in Sources */,
 				A1B18D051F9C1BDD00313110 /* AppDelegate.swift in Sources */,
 				579AB7A421150FA800D58316 /* Car.swift in Sources */,
