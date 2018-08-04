@@ -12,18 +12,26 @@ class CarsTableViewController: UITableViewController {
 
     var cars: [Car] = []
     
+    var label: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.textColor = UIColor(named: "main")
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        label.text = "Carregando carros"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        loadCars()
+    }
+
+
+    func loadCars(){
         REST.loadCars(onComplete: { (cars) in
             
             self.cars = cars
@@ -55,9 +63,8 @@ class CarsTableViewController: UITableViewController {
             
             print(response)
         }
+
     }
-
-
 
     // MARK: - Table view data source
 

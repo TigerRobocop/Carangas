@@ -18,7 +18,7 @@ class AddEditViewController: UIViewController {
 
   
     var brands: [Brand] = []
-    
+    var car: Car!
     
     // MARK: - IBOutlets
     @IBOutlet weak var tfBrand: UITextField!
@@ -29,7 +29,6 @@ class AddEditViewController: UIViewController {
     @IBOutlet weak var loading: UIActivityIndicatorView!
 
     
-    var car: Car!
     
     lazy var pickerView: UIPickerView = {
         let picker = UIPickerView()
@@ -95,36 +94,59 @@ class AddEditViewController: UIViewController {
         car.gasType = scGasType.selectedSegmentIndex
         
         if car._id == nil {
-            // new car
-            REST.save(car: car) { (success) in
-                self.goBack()
-            }
+            save()
         } else {
-            // 2 - edit current car
-            REST.update(car: car) { (success) in
+            update()
+        }
+    }
+    
+    func save(){
+        startLoadingAnimation()
+        // new car
+        REST.save(car: car) { (success) in
+            if success {
                 self.goBack()
+            } else{
+                self.showAlert(withTitle: "Ops", withMessage: "Não foi possível adicionar novo carro", isTryAgain: true, operation: .add_car)
+            }
+        }
+    }
+    
+    func update(){
+        startLoadingAnimation()
+        // 2 - edit current car
+        REST.update(car: car) { (success) in
+            if success {
+                self.goBack()
+            }else {
+                self.showAlert(withTitle: "Ops", withMessage: "Não foi possível edit carro", isTryAgain: true, operation: .edit_car)
             }
         }
     }
     
     func loadBrands() {
-        
+        startLoadingAnimation()
         REST.loadBrands { (brands) in
-            guard let brands = brands else {return}
+            guard let brands = brands else {
+                self.showAlert(withTitle: "Ops", withMessage: "Não foi possível carregar tabela FIPE", isTryAgain: true, operation: .get_brands)
+                return
+                
+            }
             
             // ascending order
             self.brands = brands.sorted(by: {$0.fipe_name < $1.fipe_name})
             
             DispatchQueue.main.async {
+                self.stopLoadingAnimation()
                 self.pickerView.reloadAllComponents()
             }
-            
         }
     }
 
     func goBack() {
         
         DispatchQueue.main.async {
+            self.stopLoadingAnimation()
             self.navigationController?.popViewController(animated: true)
         }
         
@@ -140,8 +162,45 @@ class AddEditViewController: UIViewController {
     func stopLoadingAnimation() {
         self.btAddEdit.isEnabled = true
         self.btAddEdit.backgroundColor = UIColor(named: "main")
-        self.btAddEdit.alpha = 0
+        self.btAddEdit.alpha = 1
         self.loading.stopAnimating()
+    }
+    
+    func showAlert(withTitle titleMessage: String, withMessage message: String, isTryAgain hasRetry: Bool, operation oper: CarOperationAction) {
+        
+        if oper != .get_brands {
+            DispatchQueue.main.async {
+                self.stopLoadingAnimation()
+            }
+            
+        }
+        
+        let alert = UIAlertController(title: titleMessage, message: message, preferredStyle: .actionSheet)
+        
+        if hasRetry {
+            let tryAgainAction = UIAlertAction(title: "Tentar novamente", style: .default, handler: {(action: UIAlertAction) in
+                
+                switch oper {
+                    case .add_car:
+                        self.save()
+                    case .edit_car:
+                        self.update()
+                    case .get_brands:
+                        self.loadBrands()
+                }
+                
+            })
+            alert.addAction(tryAgainAction)
+            
+            let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: {(action: UIAlertAction) in
+                self.goBack()
+            })
+            alert.addAction(cancelAction)
+        }
+        
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
 
