@@ -70,14 +70,14 @@ class REST {
                     }
                     
                     do {
-                        let cars = try JSONDecoder().decode([Car].self, from: data)
+                        let brands = try JSONDecoder().decode([Brand].self, from: data)
                         // pronto para reter dados
-                        onComplete(nil)
+                        onComplete(brands)
                         
-                        for car in cars {
-                            print(car.name)
-                        }
-                        
+//                        for car in cars {
+//                            print(car.name)
+//                        }
+//
                     } catch {
                         // algum erro ocorreu com os dados
                         print(error.localizedDescription)
@@ -162,92 +162,11 @@ class REST {
         
         // chamando o update passando operation
         applyOperation(car: car, operation: .save, onComplete: onComplete)
-//        // 1
-//        guard let url = URL(string: basePath) else {
-//            onComplete(false)
-//            return
-//        }
-//
-//        // 2
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "POST"
-//
-//        // 3
-//        // transformar objeto para um JSON, processo contrario do decoder -> Encoder
-//        guard let json = try? JSONEncoder().encode(car) else {
-//            onComplete(false)
-//            return
-//        }
-//        request.httpBody = json
-//
-//        // 4
-//        let dataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
-//            // 5
-//
-//
-//                if error == nil {
-//
-//                    // verificar e desembrulhar em uma unica vez
-//                    guard let response = response as? HTTPURLResponse, response.statusCode == 200, let _ = data else {
-//                        onComplete(false)
-//                        return
-//                    }
-//
-//                    // sucesso
-//                    onComplete(true)
-//
-//                } else {
-//                    onComplete(false)
-//                }
-//        }
-//        dataTask.resume()
-//
     }
     
     class func update(car: Car, onComplete: @escaping (Bool) -> Void ) {
         // chamando o update passando operation
         applyOperation(car: car, operation: .update, onComplete: onComplete)
-//        // 1
-//        let urlString = basePath + "/" + car._id!
-//        guard let url = URL(string: urlString) else {
-//            onComplete(false)
-//            return
-//        }
-//
-//        // 2
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "PUT"
-//
-//        // 3
-//        // transformar objeto para um JSON, processo contrario do decoder -> Encoder
-//        guard let json = try? JSONEncoder().encode(car) else {
-//            onComplete(false)
-//            return
-//        }
-//        request.httpBody = json
-//
-//        // 4
-//        let dataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
-//            // 5
-//
-//
-//            if error == nil {
-//
-//                // verificar e desembrulhar em uma unica vez
-//                guard let response = response as? HTTPURLResponse, response.statusCode == 200, let _ = data else {
-//                    onComplete(false)
-//                    return
-//                }
-//
-//                // sucesso
-//                onComplete(true)
-//
-//            } else {
-//                onComplete(false)
-//            }
-//        }
-//        dataTask.resume()
-        
     }
     
     

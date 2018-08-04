@@ -105,11 +105,6 @@ class AddEditViewController: UIViewController {
                 self.goBack()
             }
         }
-//        // 1
-//        REST.save(car: car) { (success) in
-//            // 2
-//            self.goBack()
-//        }
     }
     
     func loadBrands() {
