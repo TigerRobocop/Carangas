@@ -23,7 +23,7 @@ class CarsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        label.text = "Carregando carros"
+        
         
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(loadCars), for: .valueChanged)
@@ -124,7 +124,7 @@ class CarsTableViewController: UITableViewController {
 //            tableView.deleteRows(at: [indexPath], with: .fade)
             
             let car = cars[indexPath.row]
-            REST.delete(car: car) { (success) in
+            REST.delete(car: car, onComplete: { (success) in
                 if success {
                     
                     // ATENCAO nao esquecer disso
@@ -135,6 +135,27 @@ class CarsTableViewController: UITableViewController {
                         tableView.deleteRows(at: [indexPath], with: .fade)
                     }
                 }
+            }) { (error) in
+                var response: String = ""
+                
+                switch error {
+                case .invalidJSON:
+                    response = "invalidJSON"
+                case .noData:
+                    response = "noData"
+                case .noResponse:
+                    response = "noResponse"
+                case .url:
+                    response = "JSON inválido"
+                case .taskError(let error):
+                    response = "\(error.localizedDescription)"
+                case .responseStatusCode(let code):
+                    if code != 200 {
+                        response = "Algum problema com o servidor. :( \nError:\(code)"
+                    }
+                }
+                
+                print(response)
             }
         }
         

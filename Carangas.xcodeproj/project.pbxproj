@@ -73,8 +73,8 @@
 				A1B18D161F9C1D7E00313110 /* CarsTableViewController.swift */,
 				A1B18D181F9C1DBA00313110 /* AddEditViewController.swift */,
 				A1B18D1A1F9C1DCF00313110 /* CarViewController.swift */,
-				579AB7A8211510F500D58316 /* REST.swift */,
 				57B6E935211619970053A4F9 /* MenuTableViewController.swift */,
+				579AB7A8211510F500D58316 /* REST.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
